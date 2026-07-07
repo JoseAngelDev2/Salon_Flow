@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salon Flow · Customers</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+
+    <!-- ===================== SIDEBAR ===================== -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-mark">SF</span>
+        <span class="logo-text">Salon Flow</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-view="dashboard">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <rect x="3" y="3" width="7" height="9" rx="1.5"/>
+            <rect x="14" y="3" width="7" height="5" rx="1.5"/>
+            <rect x="14" y="12" width="7" height="9" rx="1.5"/>
+            <rect x="3" y="16" width="7" height="5" rx="1.5"/>
+          </svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#" class="nav-item" data-view="customers">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="9" cy="7.5" r="3.2"/>
+            <path d="M2.5 20c0-3.6 3-6 6.5-6s6.5 2.4 6.5 6"/>
+            <circle cx="17.5" cy="8.5" r="2.4"/>
+            <path d="M15 13.2c2.6.3 4.5 2 4.5 4.3"/>
+          </svg>
+          <span>Customers</span>
+        </a>
+        <a href="#" class="nav-item" data-view="about">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="12" r="9.5"/>
+            <path d="M12 16v-5"/>
+            <path d="M12 8.2h.01"/>
+          </svg>
+          <span>About</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-profile">
+        <div class="profile-avatar">JP</div>
+        <div class="profile-info">
+          <span class="profile-name">José Polanco</span>
+          <span class="profile-role">Administrator</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ===================== MAIN ===================== -->
+    <main class="main-area">
+
+      <!-- ---------- VISTA: DASHBOARD ---------- -->
+      <section id="view-dashboard" class="view">
+        <header class="main-header">
+          <div>
+            <h1 class="page-title">Dashboard</h1>
+            <p class="page-subtitle">Overview of your salon</p>
+          </div>
+        </header>
+
+        <div class="stats-grid">
+          <div class="card stat-card">
+            <div class="stat-icon stat-icon-total">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="9" cy="7.5" r="3.2"/>
+                <path d="M2.5 20c0-3.6 3-6 6.5-6s6.5 2.4 6.5 6"/>
+                <circle cx="17.5" cy="8.5" r="2.4"/>
+                <path d="M15 13.2c2.6.3 4.5 2 4.5 4.3"/>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label">Total Users</span>
+              <span class="stat-value" id="statTotal">—</span>
+            </div>
+          </div>
+
+          <div class="card stat-card">
+            <div class="stat-icon stat-icon-active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M5 12.5l4.5 4.5L19 7.5"/>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label">Active</span>
+              <span class="stat-value" id="statActive">—</span>
+            </div>
+          </div>
+
+          <div class="card stat-card">
+            <div class="stat-icon stat-icon-inactive">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M8 8l8 8M16 8l-8 8"/>
+              </svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-label">Inactive</span>
+              <span class="stat-value" id="statInactive">—</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- VISTA: CUSTOMERS ---------- -->
+      <section id="view-customers" class="view" hidden>
+        <header class="main-header">
+          <div>
+            <h1 class="page-title">Customers</h1>
+            <p class="page-subtitle">Manage your customers</p>
+          </div>
+          <button id="btnAddCustomer" class="btn btn-primary">
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12h14"/>
+            </svg>
+            Add Customer
+          </button>
+        </header>
+
+        <div class="search-bar">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="M21 21l-4.35-4.35"/>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search by name or phone..." autocomplete="off" />
+        </div>
+
+        <div class="content-grid">
+
+          <!-- Tabla -->
+          <div class="card table-card">
+            <div class="table-scroll">
+              <table class="customers-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Lastname</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="customersTableBody">
+                  <!-- Filas generadas por ui.js -->
+                </tbody>
+              </table>
+              <p id="emptyState" class="empty-state" hidden>No customers found.</p>
+              <p id="loadingState" class="loading-state">Loading customers...</p>
+            </div>
+          </div>
+
+          <!-- Formulario -->
+          <aside id="customerFormPanel" class="card form-card" hidden>
+            <div class="form-card-header">
+              <h2 id="formTitle">Add Customer</h2>
+            </div>
+
+            <form id="customerForm" novalidate>
+              <input type="hidden" id="customerId" />
+
+              <div class="field-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" autocomplete="off" />
+                <span class="field-error" id="error-name"></span>
+              </div>
+
+              <div class="field-group">
+                <label for="lastname">Lastname</label>
+                <input type="text" id="lastname" name="lastname" autocomplete="off" />
+                <span class="field-error" id="error-lastname"></span>
+              </div>
+
+              <div class="field-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="off" />
+                <span class="field-error" id="error-email"></span>
+              </div>
+
+              <div class="field-group">
+                <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" autocomplete="off" />
+                <span class="field-error" id="error-phone"></span>
+              </div>
+
+              <div class="field-group">
+                <label for="active">Status</label>
+                <select id="active" name="active">
+                  <option value="">Select status</option>
+                  <option value="1">Active</option>
+                  <option value="0">Inactive</option>
+                </select>
+                <span class="field-error" id="error-active"></span>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" id="btnCancel" class="btn btn-ghost">Cancel</button>
+                <button type="submit" id="btnSave" class="btn btn-primary">Save</button>
+              </div>
+            </form>
+          </aside>
+
+        </div>
+      </section>
+
+      <!-- ---------- VISTA: ABOUT ---------- -->
+      <section id="view-about" class="view" hidden>
+        <header class="main-header">
+          <div>
+            <h1 class="page-title">About</h1>
+            <p class="page-subtitle">Salon Flow · Customer management</p>
+          </div>
+        </header>
+
+        <div class="card about-card">
+          <p>Salon Flow is a lightweight customer management interface built with vanilla HTML, CSS and JavaScript, consuming a REST API for customer data.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast de errores de conexión / éxito -->
+  <div id="toast" class="toast" hidden></div>
+
+  <!-- Modal de confirmación reutilizable (reemplaza window.confirm) -->
+  <div id="confirmOverlay" class="modal-overlay" hidden>
+    <div class="card confirm-modal">
+      <p id="confirmMessage" class="confirm-message"></p>
+      <div class="confirm-actions">
+        <button type="button" id="confirmCancelBtn" class="btn btn-ghost">Cancel</button>
+        <button type="button" id="confirmAcceptBtn" class="btn btn-primary">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/customers.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
